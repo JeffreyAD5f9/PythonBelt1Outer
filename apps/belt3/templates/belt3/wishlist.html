@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Products</title>
+  {% load staticfiles %}
+  <link rel="stylesheet" href="{% static 'belt3/css/belt3.css' %}"media="screen" title="no title"  charset="utf-8">
+</head>
+  <body>
+    <h1>Welcome {{userCurrent.Username}}</h1>
+
+    <a href = "/logout">Log Out</a>
+
+
+    <h1>Wishlist</h1>
+      <table>
+        <tr>
+          <th>Item Name</th>
+          <th>ID</th>
+          <th>Actions</th>
+        </tr>
+        {% for item in wishItems %}
+          <tr>
+            <td>{{ item.ItemName }}</td>
+            <td>{{ item.id }}</td>
+
+            <td><a href = "/view/{{ item.id }}">View Item</a></td>
+            <td><a href = "/remove/{{ item.id }}">Remove</a></td>
+          </tr>
+        {% endfor %}
+      </table>
+
+      <h1>Available Items</h1>
+        <table>
+          <tr>
+            <th>Item Name</th>
+            <th>ID</th>
+            <th>Actions</th>
+          </tr>
+          {% for item in items %}
+              <tr>
+                <td>{{ item.ItemName }}</td>
+                <td>{{ item.id }}</td>
+                <td><a href = "/view/{{ item.id }}">View Item</a></td>
+                <td><a href = "/addWishItem/{{ item.id }}">Wish</a></td>
+              </tr>
+          {% endfor %}
+        </table>
+
+        <a href = "/gotoItemCreate">Add New Item</a>
+  </body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Products</title>
+  {% load staticfiles %}
+  <link rel="stylesheet" href="{% static 'belt2/css/belt2.css' %}"media="screen" title="no title"  charset="utf-8">
+</head>
+  <body>
+    <h1>Item: {{item.ItemName}}</h1>
+
+    <a href = "/gotowishlist">Back to Wishlist</a>
+
+    <h1>Users Who Wished for this Item</h1>
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Username</th>
+          <th>ID</th>
+        </tr>
+        {% for user in users %}
+        <p>x</p>
+            <tr>
+              <td>{{ user.Name }}</td>
+              <td>{{ user.Username }}</td>
+              <td>{{ user.id }}</td>
+            </tr>
+        {% endfor %}
+      </table>
+
+
+  </body>
+</html>

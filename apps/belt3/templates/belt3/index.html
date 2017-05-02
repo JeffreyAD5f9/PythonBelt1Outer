@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Products</title>
+  {% load staticfiles %}
+  <link rel="stylesheet" href="{% static 'belt3/css/belt3.css' %}"media="screen" title="no title"  charset="utf-8">
+</head>
+
+<body>
+  <h1>Register</h1>
+  <form action = "/register" method="post">
+    {% csrf_token %}
+    Name:
+    <label>
+      <input type="text" name='name'/>
+    </label>
+    Username:
+    <label>
+      <input type="text" name='username'/>
+    </label>
+    Email:
+    <label>
+      <input type="text" name='email'/>
+    </label>
+    Password:
+    <label>
+      <input type="text" name='password'/>
+    </label>
+    Confirm Password:
+    <label>
+      <input type="text" name='cpassword'/>
+    </label>
+    <input type="submit" value="Submit">
+  </form>
+
+  {% if messages %}
+      {% for message in messages %}
+        {% if 'register' in message.tags %}
+          <p class="error">{{message}}</p>
+        {% endif %}
+      {% endfor %}
+{% endif %}
+
+    <h1>Login</h1>
+  <form action = "/login" method="post">
+      {% csrf_token %}
+    email:
+    <label>
+      <input type="text" name='logemail'/>
+    </label>
+    Password:
+    <label>
+      <input type="text" name='logpassword'/>
+    </label>
+    <input type="submit" value="Submit">
+  </form>
+
+  {% if messages %}
+      {% for message in messages %}
+        {% if 'login' in message.tags %}
+          <p class="error">{{message}}</p>
+        {% endif %}
+      {% endfor %}
+{% endif %}
+
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Products</title>
+  {% load staticfiles %}
+  <link rel="stylesheet" href="{% static 'belt3/css/belt3.css' %}"media="screen" title="no title"  charset="utf-8">
+</head>
+  <body>
+    <h1>Create a New Entry in Your Wishlist</h1>
+
+    <a href = "/gotowishlist">Back to WishList</a>
+
+    <h1>Create</h1>
+    <form action = "/itemCreate" method="post">
+      {% csrf_token %}
+      Item:
+      <label>
+        <input type="text" name='itemName'/>
+      </label>
+
+      <input type="submit" value="Submit">
+    </form>
+
+    {% if messages %}
+        {% for message in messages %}
+          {% if 'create' in message.tags %}
+            <p class="error">{{message}}</p>
+          {% endif %}
+        {% endfor %}
+  {% endif %}
+
+  </body>
+</html>
